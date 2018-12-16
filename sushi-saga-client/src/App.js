@@ -7,7 +7,8 @@ const API = "http://localhost:3000/sushis"
 
 class App extends Component {
   state = {
-    sushis: []
+    sushis: [],
+    currentIndex: 0
   }
 
   getSushis = () => {
@@ -21,9 +22,13 @@ class App extends Component {
   }
 
   render() {
+    const { sushis, currentIndex } = this.state
     return (
       <div className="app">
-        <SushiContainer  />
+        <SushiContainer
+          sushis={sushis}
+          currentIndex={currentIndex}
+        />
         <Table />
       </div>
     );
