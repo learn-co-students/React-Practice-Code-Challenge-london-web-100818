@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
+import SushiWallet from '../components/SushiWallet';
 
-const Table = ({ currentBudget, eatenSushi }) => {
+const Table = ({ currentBudget, eatenSushi, updateBudget }) => {
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
@@ -18,6 +19,7 @@ const Table = ({ currentBudget, eatenSushi }) => {
           {renderPlates(eatenSushi)}
         </div>
       </div>
+      <SushiWallet addMoneyToWallet={updateBudget} />
     </Fragment>
   )
 }

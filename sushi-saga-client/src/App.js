@@ -13,12 +13,22 @@ class App extends Component {
     currentBudget: 100
   }
 
+  updateBudget = addToBudget => {
+    const { currentBudget } = this.state
+
+    let newBudget = currentBudget + addToBudget
+    
+    this.setState({
+      currentBudget: newBudget
+    })
+  }
+
   eatSushi = (id, price) => {
     const { eatenSushi, currentBudget } = this.state
 
     let newBudget = currentBudget - price
 
-    if(!eatenSushi.includes(id) && newBudget > 0) {
+    if(!eatenSushi.includes(id) && newBudget >= 0) {
       this.setState({
         eatenSushi: [...eatenSushi, id],
         currentBudget: newBudget
@@ -49,7 +59,7 @@ class App extends Component {
   }
 
   render() {
-    const { eatSushi, updateCurrentIndex } = this
+    const { eatSushi, updateBudget, updateCurrentIndex } = this
     const { sushis, currentIndex, eatenSushi, currentBudget } = this.state
     return (
       <div className="app">
@@ -63,6 +73,7 @@ class App extends Component {
         <Table
           currentBudget={currentBudget}
           eatenSushi={eatenSushi}
+          updateBudget={updateBudget}
         />
       </div>
     );
