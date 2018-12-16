@@ -9,15 +9,18 @@ class App extends Component {
   state = {
     sushis: [],
     currentIndex: 0,
-    eatenSushi: []
+    eatenSushi: [],
+    currentBudget: 100
   }
 
   eatSushi = (id) => {
     const { eatenSushi } = this.state
 
-    this.setState({
-      eatenSushi: [...eatenSushi, id]
-    })
+    if(!eatenSushi.includes(id)) {
+      this.setState({
+        eatenSushi: [...eatenSushi, id]
+      })
+    }
   }
 
   updateCurrentIndex = () => {
@@ -44,7 +47,7 @@ class App extends Component {
 
   render() {
     const { eatSushi, updateCurrentIndex } = this
-    const { sushis, currentIndex, eatenSushi } = this.state
+    const { sushis, currentIndex, eatenSushi, currentBudget } = this.state
     return (
       <div className="app">
         <SushiContainer
@@ -54,7 +57,10 @@ class App extends Component {
           eatenSushi={eatenSushi}
           updateCurrentIndex={updateCurrentIndex}
         />
-        <Table />
+        <Table
+          currentBudget={currentBudget}
+          eatenSushi={eatenSushi}
+        />
       </div>
     );
   }
