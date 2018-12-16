@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Sushi from '../components/Sushi'
 import MoreButton from '../components/MoreButton'
 
-const SushiContainer = ({ sushis, currentIndex }) => {
+const SushiContainer = ({ sushis, currentIndex, eatSushi, eatenSushi }) => {
   const fourSushiCards = sushis
     .slice(currentIndex, currentIndex + 4)
     .map(sushi => {
@@ -10,6 +10,8 @@ const SushiContainer = ({ sushis, currentIndex }) => {
         <Sushi
           key={sushi.id}
           sushi={sushi}
+          eatSushi={() => eatSushi(sushi.id)}
+          eatenSushi={eatenSushi}
         />
       )
     })

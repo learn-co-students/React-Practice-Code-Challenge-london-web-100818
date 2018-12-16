@@ -8,7 +8,16 @@ const API = "http://localhost:3000/sushis"
 class App extends Component {
   state = {
     sushis: [],
-    currentIndex: 0
+    currentIndex: 0,
+    eatenSushi: []
+  }
+
+  eatSushi = (id) => {
+    const { eatenSushi } = this.state
+
+    this.setState({
+      eatenSushi: [...eatenSushi, id]
+    })
   }
 
   getSushis = () => {
@@ -22,12 +31,15 @@ class App extends Component {
   }
 
   render() {
-    const { sushis, currentIndex } = this.state
+    const { eatSushi } = this
+    const { sushis, currentIndex, eatenSushi } = this.state
     return (
       <div className="app">
         <SushiContainer
           sushis={sushis}
           currentIndex={currentIndex}
+          eatSushi={eatSushi}
+          eatenSushi={eatenSushi}
         />
         <Table />
       </div>
