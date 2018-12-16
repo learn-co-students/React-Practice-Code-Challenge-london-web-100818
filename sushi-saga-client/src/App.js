@@ -20,6 +20,18 @@ class App extends Component {
     })
   }
 
+  updateCurrentIndex = () => {
+    const { currentIndex } = this.state
+
+    let newIndex
+    
+    currentIndex === 96 ? newIndex = 0 : newIndex = currentIndex + 4
+
+    this.setState({
+      currentIndex: newIndex
+    })
+  }
+
   getSushis = () => {
     fetch(API)
       .then(resp => resp.json())
@@ -31,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { eatSushi } = this
+    const { eatSushi, updateCurrentIndex } = this
     const { sushis, currentIndex, eatenSushi } = this.state
     return (
       <div className="app">
@@ -40,6 +52,7 @@ class App extends Component {
           currentIndex={currentIndex}
           eatSushi={eatSushi}
           eatenSushi={eatenSushi}
+          updateCurrentIndex={updateCurrentIndex}
         />
         <Table />
       </div>

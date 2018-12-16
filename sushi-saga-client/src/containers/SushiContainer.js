@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Sushi from '../components/Sushi'
 import MoreButton from '../components/MoreButton'
 
-const SushiContainer = ({ sushis, currentIndex, eatSushi, eatenSushi }) => {
+const SushiContainer = ({ sushis, currentIndex, eatSushi, eatenSushi, updateCurrentIndex }) => {
   const fourSushiCards = sushis
     .slice(currentIndex, currentIndex + 4)
     .map(sushi => {
@@ -20,7 +20,7 @@ const SushiContainer = ({ sushis, currentIndex, eatSushi, eatenSushi }) => {
     <Fragment>
       <div className="belt">
         {fourSushiCards}
-        <MoreButton />
+        <MoreButton updateCurrentIndex={updateCurrentIndex} />
       </div>
     </Fragment>
   )
