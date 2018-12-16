@@ -10,7 +10,7 @@ const SushiContainer = ({ sushis, currentIndex, eatSushi, eatenSushi, updateCurr
         <Sushi
           key={sushi.id}
           sushi={sushi}
-          eatSushi={() => eatSushi(sushi.id)}
+          eatSushi={() => eatSushi(sushi.id, sushi.price)}
           eatenSushi={eatenSushi}
         />
       )

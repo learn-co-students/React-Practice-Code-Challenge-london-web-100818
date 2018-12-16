@@ -13,12 +13,15 @@ class App extends Component {
     currentBudget: 100
   }
 
-  eatSushi = (id) => {
-    const { eatenSushi } = this.state
+  eatSushi = (id, price) => {
+    const { eatenSushi, currentBudget } = this.state
 
-    if(!eatenSushi.includes(id)) {
+    let newBudget = currentBudget - price
+
+    if(!eatenSushi.includes(id) && newBudget > 0) {
       this.setState({
-        eatenSushi: [...eatenSushi, id]
+        eatenSushi: [...eatenSushi, id],
+        currentBudget: newBudget
       })
     }
   }
