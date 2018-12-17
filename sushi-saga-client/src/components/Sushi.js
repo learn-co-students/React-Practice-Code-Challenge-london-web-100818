@@ -1,20 +1,22 @@
 import React, { Fragment } from 'react'
+import SushiContainer from '../containers/SushiContainer'
+import App from '../App.js'
 
-const Sushi = (props) => {
+
+const Sushi = ({sushi, handleClick, eatenSushis}) => {
+  
   return (
+ 
     <div className="sushi">
       <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
-        { 
-          /* Tell me if this sushi has been eaten! */ 
-          true ?
-            null
-          :
-            <img src={/* Give me an image source! */} width="100%" />
+           onClick={(event) => {handleClick(sushi); 
+            }} >
+           {console.log(eatenSushis) }
+        {  eatenSushis.find(s => s.id === sushi.id) ? null : <img src={sushi.img_url} width="100%" />
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {sushi.name} - ${sushi.price}
       </h4>
     </div>
   )
